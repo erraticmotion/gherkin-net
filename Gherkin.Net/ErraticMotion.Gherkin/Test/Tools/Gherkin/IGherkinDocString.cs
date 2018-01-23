@@ -1,14 +1,7 @@
-﻿// ---------------------------------------------------------------------------
-// (C) 2016 Parkeon Limited.
-// 
-//  No part of this source code may be reproduced, digitised, stored in a 
-//  retrieval system, communicated to the public or caused to be seen or heard 
-//  in public, made publicly available or publicly performed, offered for sale 
-//  or hire or exhibited by way of trade in public or distributed by way of trade 
-//  in any form or by any means, electronic, mechanical or otherwise without the 
-//  written permission of Parkeon Limited.
-// 
-// ---------------------------------------------------------------------------
+﻿// <copyright file="IGherkinDocString.cs" company="Erratic Motion Ltd">
+// Copyright (c) Erratic Motion Ltd. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
@@ -29,10 +22,10 @@ namespace ErraticMotion.Test.Tools.Gherkin
     public interface IGherkinDocString : IEnumerable<string>, IGherkin
     {
         /// <summary>
-        /// Gets the <see cref="System.String"/> at the specified index.
+        /// Gets the <see cref="string"/> at the specified index.
         /// </summary>
         /// <value>
-        /// The <see cref="System.String"/> at the specified index that relates to the test data value.
+        /// The <see cref="string"/> at the specified index that relates to the test data value.
         /// </value>
         /// <param name="index">The index.</param>
         /// <returns>A string representation of the test data at the specified index.</returns>

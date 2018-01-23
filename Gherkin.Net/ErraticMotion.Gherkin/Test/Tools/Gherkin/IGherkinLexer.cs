@@ -1,14 +1,7 @@
-﻿// ---------------------------------------------------------------------------
-// (C) 2016 Parkeon Limited.
-// 
-//  No part of this source code may be reproduced, digitised, stored in a 
-//  retrieval system, communicated to the public or caused to be seen or heard 
-//  in public, made publicly available or publicly performed, offered for sale 
-//  or hire or exhibited by way of trade in public or distributed by way of trade 
-//  in any form or by any means, electronic, mechanical or otherwise without the 
-//  written permission of Parkeon Limited.
-// 
-// ---------------------------------------------------------------------------
+﻿// <copyright file="IGherkinLexer.cs" company="Erratic Motion Ltd">
+// Copyright (c) Erratic Motion Ltd. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
