@@ -10,7 +10,7 @@
 // 
 // ---------------------------------------------------------------------------
 
-namespace ErraticMotion.Test
+namespace ErraticMotion
 {
     using System;
     using System.Collections.Generic;
