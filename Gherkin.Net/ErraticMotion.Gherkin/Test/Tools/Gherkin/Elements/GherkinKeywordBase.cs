@@ -1,20 +1,13 @@
-﻿// ---------------------------------------------------------------------------
-// (C) 2016 Parkeon Limited.
-// 
-//  No part of this source code may be reproduced, digitised, stored in a 
-//  retrieval system, communicated to the public or caused to be seen or heard 
-//  in public, made publicly available or publicly performed, offered for sale 
-//  or hire or exhibited by way of trade in public or distributed by way of trade 
-//  in any form or by any means, electronic, mechanical or otherwise without the 
-//  written permission of Parkeon Limited.
-// 
-// ---------------------------------------------------------------------------
+﻿// <copyright file="GherkinKeywordBase.cs" company="Erratic Motion Ltd">
+// Copyright (c) Erratic Motion Ltd. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 #define PREFER_GEHERKIN_PLUS
 
 namespace ErraticMotion.Test.Tools.Gherkin.Elements
 {
-    public abstract class GherkinKeywordBase : IGherkinKeyword
+    internal abstract class GherkinKeywordBase : IGherkinKeyword
     {
         protected GherkinKeywordBase(ILanguageInfo info, GherkinKeyword keyword, string name, string description)
         {
@@ -40,10 +33,10 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
             this.Description = description ?? string.Empty;
         }
 
-        public ILanguageSyntax<GherkinKeyword> Keyword { get; private set; }
+        public ILanguageSyntax<GherkinKeyword> Keyword { get; }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public string Description { get; private set; }
+        public string Description { get; }
     }
 }

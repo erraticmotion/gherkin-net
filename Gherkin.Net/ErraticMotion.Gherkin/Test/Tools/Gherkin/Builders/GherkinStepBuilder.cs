@@ -1,14 +1,7 @@
-﻿// ---------------------------------------------------------------------------
-// (C) 2016 Parkeon Limited.
-// 
-//  No part of this source code may be reproduced, digitised, stored in a 
-//  retrieval system, communicated to the public or caused to be seen or heard 
-//  in public, made publicly available or publicly performed, offered for sale 
-//  or hire or exhibited by way of trade in public or distributed by way of trade 
-//  in any form or by any means, electronic, mechanical or otherwise without the 
-//  written permission of Parkeon Limited.
-// 
-// ---------------------------------------------------------------------------
+﻿// <copyright file="GherkinStepBuilder.cs" company="Erratic Motion Ltd">
+// Copyright (c) Erratic Motion Ltd. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace ErraticMotion.Test.Tools.Gherkin.Builders
 {
@@ -20,7 +13,8 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     /// Represents a builder for Gherkin Steps.
     /// </summary>
     /// <typeparam name="T">The type of object to be returned after building this instance.</typeparam>
-    public abstract class GherkinStepBuilder<T> : GherkinBuilder<T> where T : class
+    public abstract class GherkinStepBuilder<T> : GherkinBuilder<T>
+        where T : class
     {
         private readonly IList<IBuilder<IGherkinBlockStep>> steps = new List<IBuilder<IGherkinBlockStep>>();
 

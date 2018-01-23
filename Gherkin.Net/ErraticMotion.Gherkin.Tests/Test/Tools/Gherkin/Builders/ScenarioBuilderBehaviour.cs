@@ -15,9 +15,7 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using System.Linq;
 
     using FluentAssertions;
-
     using Moq;
-
     using NUnit.Framework;
 
     [TestFixture]

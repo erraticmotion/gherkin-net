@@ -1,14 +1,7 @@
-﻿// ---------------------------------------------------------------------------
-// (C) 2016 Parkeon Limited.
-// 
-//  No part of this source code may be reproduced, digitised, stored in a 
-//  retrieval system, communicated to the public or caused to be seen or heard 
-//  in public, made publicly available or publicly performed, offered for sale 
-//  or hire or exhibited by way of trade in public or distributed by way of trade 
-//  in any form or by any means, electronic, mechanical or otherwise without the 
-//  written permission of Parkeon Limited.
-// 
-// ---------------------------------------------------------------------------
+﻿// <copyright file="Feature.cs" company="Erratic Motion Ltd">
+// Copyright (c) Erratic Motion Ltd. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+// </copyright>
 
 namespace ErraticMotion.Test.Tools.Gherkin.Elements
 {
@@ -18,16 +11,16 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
     /// <summary>
     /// Represents the AST root object returned from the Gherkin Lexer.
     /// </summary>
-    public class Feature : GherkinKeywordBase, IGherkinFeature
+    internal class Feature : GherkinKeywordBase, IGherkinFeature
     {
         public Feature(
             ILanguageInfo info,
-            string name, 
-            string description, 
+            string name,
+            string description,
             string ns,
-            IGherkinBlock background, 
-            IEnumerable<IGherkinScenario> scenarios, 
-            IList<IGherkinComment> comments, 
+            IGherkinBlock background,
+            IEnumerable<IGherkinScenario> scenarios,
+            IList<IGherkinComment> comments,
             IList<IGherkinTag> tags,
             string sourceFile)
             : base(info, GherkinKeyword.Feature, name, description)
@@ -41,19 +34,19 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
             this.Namespace = ns;
         }
 
-        public string Language { get; private set; }
+        public string Language { get; }
 
-        public string Namespace { get; private set; }
+        public string Namespace { get; }
 
-        public string SourceFile { get; private set; }
+        public string SourceFile { get; }
 
-        public IGherkinBlock Background { get; private set; }
+        public IGherkinBlock Background { get; }
 
-        public IGherkinElements<IGherkinScenario> Scenarios { get; private set; }
+        public IGherkinElements<IGherkinScenario> Scenarios { get; }
 
-        public IGherkinElements<IGherkinComment> Comments { get; private set; }
+        public IGherkinElements<IGherkinComment> Comments { get; }
 
-        public IGherkinElements<IGherkinTag> Tags { get; private set; }
+        public IGherkinElements<IGherkinTag> Tags { get; }
 
         public IGherkinElements<string> Gherkin
         {
