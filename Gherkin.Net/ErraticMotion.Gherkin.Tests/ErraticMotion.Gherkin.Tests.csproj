@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44AAE156-F08E-466F-98A9-5B2D7F4565F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ErraticMotion</RootNamespace>
+    <AssemblyName>ErraticMotion.Gherkin.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ErraticMotion.TestFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ErraticMotion.TestFramework.0.0.1\lib\net461\ErraticMotion.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq, Version=4.8.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.8.1\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\Tools\EnglishLanguageServiceTests.cs" />
+    <Compile Include="Test\Tools\FrenchLanguageServiceTests.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\BackgroundBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\ExampleBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\FeatureBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\ScenarioBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\ScenarioOutlineBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\ScenarioStepBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\TestCaseBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\GherkinKeywordTests.cs" />
+    <Compile Include="Test\Tools\Gherkin\GherkinStepTests.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerFeature.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerFeatureBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerFeatureEnBackgroundBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerFeatureFrBackgroundBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioDocStringBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioEnBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioFrBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioMultipleAndsBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioOutlineBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioOutlinesBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenariosBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\LexerScenarioTwoGivensBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\StringTests.cs" />
+    <Compile Include="Test\Tools\LanguageServiceBase.cs" />
+    <Compile Include="Test\Tools\LanguageServiceTests.cs" />
+    <Compile Include="Test\Tools\SupportedLanguagesTests.cs" />
+    <Compile Include="Test\Tools\VocabularyTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ErraticMotion.Gherkin\ErraticMotion.Gherkin.csproj">
+      <Project>{717afa3c-ec8b-44e4-91d1-98e4a70e4a3c}</Project>
+      <Name>ErraticMotion.Gherkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
