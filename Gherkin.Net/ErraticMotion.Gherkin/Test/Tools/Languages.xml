@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Languages>
+  <Language code="en" cultureInfo="en" defaultSpecificCulture="en-US" englishName="English">
+    <Feature>Feature</Feature>
+    <Background>Background</Background>
+    <Scenario>Scenario</Scenario>
+    <ScenarioOutline>Scenario Outline</ScenarioOutline>
+    <Scenarios>Scenarios</Scenarios>
+    <Examples>Examples</Examples>
+    <Where>Where</Where>
+    <Given>Given</Given>
+    <When>When</When>
+    <Then>Then</Then>
+    <And>And</And>
+    <But>But</But>
+  </Language>
+  <Language code="fr" cultureInfo="fr" defaultSpecificCulture="fr-FR" englishName="French">
+    <Feature>Fonctionnalité</Feature>
+    <Background>Contexte</Background>
+    <Scenario>Scénario</Scenario>
+    <ScenarioOutline>Plan du scénario</ScenarioOutline>
+    <Scenarios>Scénarios</Scenarios>
+    <Examples>Exemples</Examples>
+    <Where>Ou</Where>
+    <Given>Soit</Given>
+    <When>Quand</When>
+    <Then>Alors</Then>
+    <And>Et</And>
+    <But>Mais</But>
+  </Language>
+</Languages>
+

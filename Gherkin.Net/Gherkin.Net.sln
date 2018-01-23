@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AB20E0B5-5CE6-4D3E-B687-6D0425A3BF8D}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+		SolutionInfo.cs = SolutionInfo.cs
+		..\stylecop.json = ..\stylecop.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErraticMotion.Gherkin", "ErraticMotion.Gherkin\ErraticMotion.Gherkin.csproj", "{717AFA3C-EC8B-44E4-91D1-98E4A70E4A3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErraticMotion.TestFramework", "ErraticMotion.TestFramework\ErraticMotion.TestFramework.csproj", "{DCAF9929-5D97-47C5-9586-7FFD030D19F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErraticMotion.Gherkin.Tests", "ErraticMotion.Gherkin.Tests\ErraticMotion.Gherkin.Tests.csproj", "{44AAE156-F08E-466F-98A9-5B2D7F4565F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{717AFA3C-EC8B-44E4-91D1-98E4A70E4A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717AFA3C-EC8B-44E4-91D1-98E4A70E4A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717AFA3C-EC8B-44E4-91D1-98E4A70E4A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717AFA3C-EC8B-44E4-91D1-98E4A70E4A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCAF9929-5D97-47C5-9586-7FFD030D19F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAF9929-5D97-47C5-9586-7FFD030D19F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAF9929-5D97-47C5-9586-7FFD030D19F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAF9929-5D97-47C5-9586-7FFD030D19F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44AAE156-F08E-466F-98A9-5B2D7F4565F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44AAE156-F08E-466F-98A9-5B2D7F4565F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44AAE156-F08E-466F-98A9-5B2D7F4565F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44AAE156-F08E-466F-98A9-5B2D7F4565F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71B7C263-4C8E-4E22-8440-4778516BB82C}
+	EndGlobalSection
+EndGlobal
