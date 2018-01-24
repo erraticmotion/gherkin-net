@@ -33,8 +33,11 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="ErraticMotion.Gherkin.Annotations, Version=0.0.2.23500, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ErraticMotion.Gherkin.Annotations.0.0.2\lib\net461\ErraticMotion.Gherkin.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="ErraticMotion.TestFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ErraticMotion.TestFramework.0.0.1\lib\net461\ErraticMotion.TestFramework.dll</HintPath>
+      <HintPath>..\packages\ErraticMotion.TestFramework.0.0.2\lib\net461\ErraticMotion.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.19.4.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.19.4\lib\net45\FluentAssertions.dll</HintPath>
@@ -117,6 +120,9 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Test\Tools\Gherkin\Annotations\xml_include.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
