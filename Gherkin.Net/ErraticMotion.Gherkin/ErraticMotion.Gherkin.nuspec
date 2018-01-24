@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <id>ErraticMotion.Gherkin</id>
+    <version>0.0.1</version>
+    <title>ErraticMotion Gherkin</title>
+    <authors>Rob Ives</authors>
+    <owners>Rob Ives</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/erraticmotion/gherkin-net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright 2018</copyright>
-    <tags>Tag1 Tag2</tags>
+    <description>Gherkin lexer for .NET.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright Erratic Motion 2018</copyright>
+    <tags>TDD BDD Gherkin</tags>
   </metadata>
 </package>
