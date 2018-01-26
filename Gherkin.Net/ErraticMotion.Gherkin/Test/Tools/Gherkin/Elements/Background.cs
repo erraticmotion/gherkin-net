@@ -16,9 +16,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
             this.Comments = comments;
         }
 
-        public IGherkinBlockSteps Steps { get; private set; }
+        public IGherkinBlockSteps Steps { get; }
 
-        public IList<IGherkinComment> Comments { get; private set; }
+        public IList<IGherkinComment> Comments { get; }
 
         public IGherkinElements<string> Gherkin
         {

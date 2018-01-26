@@ -79,6 +79,7 @@
     <Compile Include="Test\Tools\EnglishLanguageServiceTests.cs" />
     <Compile Include="Test\Tools\FrenchLanguageServiceTests.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\BackgroundBuilderBehaviour.cs" />
+    <Compile Include="Test\Tools\Gherkin\Builders\DocStringBuilderBehaviour.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ExampleBuilderBehaviour.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\FeatureBuilderBehaviour.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ScenarioBuilderBehaviour.cs" />
@@ -120,9 +121,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Test\Tools\Gherkin\Annotations\xml_include.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
