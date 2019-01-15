@@ -13,7 +13,8 @@ namespace ErraticMotion.Test.Tools.Gherkin
     /// </summary>
     /// <typeparam name="TGherkinElement">The type of the gherkin element.</typeparam>
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Gherkin keyword")]
-    public interface IGherkinElements<out TGherkinElement> : IEnumerable<TGherkinElement> where TGherkinElement : class
+    public interface IGherkinElements<out TGherkinElement> : IEnumerable<TGherkinElement>
+        where TGherkinElement : class
     {
         /// <summary>
         /// Gets the <typeparamref name="TGherkinElement"/> at the specified index.

@@ -8,12 +8,17 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using System.Linq;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Test Case Builder Tests.
+    /// </summary>
     [TestFixture]
     public class TestCaseBuilderBehaviour
     {
+        /// <summary>
+        /// Test case.
+        /// </summary>
         [Test]
         public void TestCase()
         {

@@ -14,21 +14,11 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
             this.Description = description;
         }
 
-        public void AddTestCase(TestCases example)
-        {
-            this.TestCase = example;
-        }
+        public GherkinScenarioBlock Parent { get; }
 
-        public void AddDocString(DocString docString)
-        {
-            this.DocString = docString;
-        }
+        public ILanguageSyntax<GherkinStep> Step { get; }
 
-        public GherkinScenarioBlock Parent { get; private set; }
-
-        public ILanguageSyntax<GherkinStep> Step { get; private set; }
-
-        public string Description { get; private set; }
+        public string Description { get; }
 
         public ITestCases TestCase { get; private set; }
 
@@ -77,6 +67,16 @@ namespace ErraticMotion.Test.Tools.Gherkin.Elements
 
                 return result;
             }
+        }
+
+        public void AddTestCase(TestCases example)
+        {
+            this.TestCase = example;
+        }
+
+        public void AddDocString(DocString docString)
+        {
+            this.DocString = docString;
         }
     }
 }

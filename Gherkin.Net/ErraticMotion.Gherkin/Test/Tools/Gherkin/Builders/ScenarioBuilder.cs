@@ -11,19 +11,31 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
 
     internal class ScenarioBuilder : GherkinStepBuilder<Scenario>
     {
-        protected internal string Title;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioBuilder"/> class.
+        /// </summary>
+        /// <param name="info">The information.</param>
+        /// <param name="title">The title.</param>
         public ScenarioBuilder(ILanguageInfo info, string title)
             : this(info, title, GherkinKeyword.Scenario)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioBuilder"/> class.
+        /// </summary>
+        /// <param name="info">The information.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="keyword">The keyword.</param>
         protected ScenarioBuilder(ILanguageInfo info, string title, GherkinKeyword keyword)
             : base(info, keyword)
         {
             this.Title = title;
         }
 
+        protected internal string Title { get; set; }
+
+        /// <inheritdoc />
         public override Scenario Build()
         {
             return new Scenario(this.LanguageInfo, this.Title, this.Description, new BlockSteps(this.Steps), this.Comments.ToArray());

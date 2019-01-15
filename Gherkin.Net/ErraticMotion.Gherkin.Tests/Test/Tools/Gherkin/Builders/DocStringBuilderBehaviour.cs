@@ -10,9 +10,54 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using FluentAssertions;
     using NUnit.Framework;
 
+    /// <summary>
+    /// DocString Builder Tests.
+    /// </summary>
     [TestFixture]
     public class DocStringBuilderBehaviour
     {
+        /// <summary>
+        /// Documents the Gherkin doc string builder gherkin.
+        /// When transformed into Gherkin, expect the builder to not preserve the
+        /// whitespace on the Gherkin DocString (the 3 double quotes) keyword, but
+        /// keep the original indentation of any text between the opening and closing
+        /// keyword.
+        /// </summary>
+        [Test]
+        public void DocStringBuilderGherkinBehaviour()
+        {
+            var sut = Builder(DocStringThreeSpaces()).Build();
+            sut.Gherkin[0].Should().Contain(string.Format("[{0}{0}{0}]", "\""));
+            sut.Gherkin[1].Should().Be("   some");
+            sut.Gherkin[2].Should().Be("    text ");
+            sut.Gherkin[3].Should().Contain(string.Format("[{0}{0}{0}]", "\""));
+        }
+
+        /// <summary>
+        /// Documents the Gherkin doc string get enumerator.
+        /// Expect on the text values between the Gherkin keywords.
+        /// </summary>
+        [Test]
+        public void DocStringGetEnumeratorBehaviour()
+        {
+            var sut = Builder(DocStringThreeSpaces()).Build();
+            var result = sut.ToArray();
+            result[0].Should().Be("some");
+            result[1].Should().Be(" text ");
+        }
+
+        /// <summary>
+        /// Documents the Gherkin doc string get index.
+        /// Expect on the text values between the Gherkin keywords.
+        /// </summary>
+        [Test]
+        public void DocStringGetIndexBehaviour()
+        {
+            var sut = Builder(DocStringThreeSpaces()).Build();
+            sut[0].Should().Be("some");
+            sut[1].Should().Be(" text ");
+        }
+
         private static IEnumerable<string> DocStringThreeSpaces()
         {
             var s = new string(new[] { ' ', ' ', ' ', '"', '"', '"' });
@@ -31,48 +76,6 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             }
 
             return builder;
-        }
-
-        /// <summary>
-        /// Documents the Gherkin doc string builder gherkin behaviour.
-        /// When transformed into Gherkin, expect the builder to not preserve the
-        /// whitespace on the Gherkin DocString (the 3 double quotes) keyword, but 
-        /// keep the original indentation of any text between the opening and closing 
-        /// keyword.
-        /// </summary>
-        [Test]
-        public void DocStringBuilderGherkinBehaviour()
-        {
-            var sut = Builder(DocStringThreeSpaces()).Build();
-            sut.Gherkin[0].Should().Contain(string.Format("[{0}{0}{0}]", "\""));
-            sut.Gherkin[1].Should().Be("   some");
-            sut.Gherkin[2].Should().Be("    text ");
-            sut.Gherkin[3].Should().Contain(string.Format("[{0}{0}{0}]", "\""));
-        }
-
-        /// <summary>
-        /// Documents the Gherkin doc string get enumerator behaviour.
-        /// Expect on the text values between the Gherkin keywords.
-        /// </summary>
-        [Test]
-        public void DocStringGetEnumeratorBehaviour()
-        {
-            var sut = Builder(DocStringThreeSpaces()).Build();
-            var result = sut.ToArray();
-            result[0].Should().Be("some");
-            result[1].Should().Be(" text ");
-        }
-
-        /// <summary>
-        /// Documents the Gherkin doc string get index behaviour.
-        /// Expect on the text values between the Gherkin keywords.
-        /// </summary>
-        [Test]
-        public void DocStringGetIndexBehaviour()
-        {
-            var sut = Builder(DocStringThreeSpaces()).Build();
-            sut[0].Should().Be("some");
-            sut[1].Should().Be(" text ");
         }
     }
 }

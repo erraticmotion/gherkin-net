@@ -41,7 +41,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                     return line.TrimStart().StartsWith(info.Localised + ":", true, CultureInfo.CurrentCulture);
 
                 default:
-                    return line.TrimStart().StartsWith(info.Localised + ":", true, CultureInfo.CurrentCulture);   
+                    return line.TrimStart().StartsWith(info.Localised + ":", true, CultureInfo.CurrentCulture);
             }
         }
 

@@ -8,19 +8,25 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using System.Linq;
 
     using FluentAssertions;
-
     using Moq;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Background Builder Tests.
+    /// </summary>
+    /// <seealso cref="IGherkinBlockStep" />
     [TestFixture]
     public class BackgroundBuilderBehaviour : GherkinStepBuilder<IGherkinBlockStep>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BackgroundBuilderBehaviour"/> class.
+        /// </summary>
         public BackgroundBuilderBehaviour()
             : base(Internationalization.Default, GherkinKeyword.Background)
         {
         }
 
+        /// <inheritdoc />
         public override IGherkinBlockStep Build()
         {
             var doc = new Mock<ILanguageSyntax<GherkinStep>>();
@@ -28,7 +34,7 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             doc.SetupGet(x => x.Localised).Returns("Given");
 
             return new ScenarioStepBuilder(
-                GherkinScenarioBlock.Given, 
+                GherkinScenarioBlock.Given,
                 doc.Object,
                 "the system is in this state").Build();
         }
@@ -49,6 +55,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             step.Description.Should().Contain("the system is in this state");
         }
 
+        /// <summary>
+        /// Gherkin block should be.
+        /// </summary>
         [Test]
         public void GherkinBlockShouldBe()
         {
@@ -56,6 +65,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             sut.Keyword.Syntax.Should().Be(GherkinKeyword.Background);
         }
 
+        /// <summary>
+        /// Background builder build no steps.
+        /// </summary>
         [Test]
         public void BackgroundBuilderBuildNoSteps()
         {

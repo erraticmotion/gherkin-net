@@ -11,14 +11,22 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using Moq;
     using NUnit.Framework;
 
+    /// <summary>
+    /// Scenario Builder Tests.
+    /// </summary>
+    /// <seealso cref="Builders.GherkinStepBuilder{IGherkinBlockStep}" />
     [TestFixture]
     public class ScenarioBuilderBehaviour : GherkinStepBuilder<IGherkinBlockStep>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioBuilderBehaviour"/> class.
+        /// </summary>
         public ScenarioBuilderBehaviour()
             : base(Internationalization.Default, GherkinKeyword.Scenario)
         {
         }
 
+        /// <inheritdoc />
         public override IGherkinBlockStep Build()
         {
             var doc = new Mock<ILanguageSyntax<GherkinStep>>();
@@ -31,12 +39,18 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
                 "the system is in this state").Build();
         }
 
+        /// <summary>
+        /// Gherkin block should be.
+        /// </summary>
         [Test]
         public void GherkinBlockShouldBe()
         {
             new ScenarioBuilder(Internationalization.Default, string.Empty).Keyword.Syntax.Should().Be(GherkinKeyword.Scenario);
         }
 
+        /// <summary>
+        /// Gherkin title should be.
+        /// </summary>
         [Test]
         public void GherkinTitleShouldBe()
         {
@@ -45,6 +59,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             result.Name.Should().Contain("method_description");
         }
 
+        /// <summary>
+        /// Scenario builder build no steps.
+        /// </summary>
         [Test]
         public void ScenarioBuilderBuildNoSteps()
         {
@@ -57,6 +74,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             result.Steps.Count().Should().Be(0);
         }
 
+        /// <summary>
+        /// Scenario builder with one step.
+        /// </summary>
         [Test]
         public void ScenarioBuilderWithOneStep()
         {

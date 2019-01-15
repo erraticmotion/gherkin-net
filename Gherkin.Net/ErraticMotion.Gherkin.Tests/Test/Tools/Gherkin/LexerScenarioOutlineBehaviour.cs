@@ -5,6 +5,7 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
 
@@ -12,19 +13,17 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using ErraticMotion.Test.Fixtures.Containers;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Lexer Scenario Outline.
+    /// </summary>
+    /// <seealso cref="Fixtures.GivenWhenThen{IGherkinFeature}" />
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class LexerScenarioOutlineBehaviour : GivenWhenThen<IGherkinFeature>
     {
-        /// <summary>
-        /// Arrange all necessary preconditions and inputs.
-        /// </summary>
-        /// <param name="kernel">The <see cref="IFixtureKernel" /> Test Double IoC container.</param>
-        /// <returns>
-        /// The System/Software Under Test.
-        /// </returns>
+        /// <inheritdoc />
         protected override IGherkinFeature Given(IFixtureKernel kernel)
         {
             var f = new StringBuilder();
@@ -43,26 +42,35 @@ namespace ErraticMotion.Test.Tools.Gherkin
             return LexerFeature.Create(f.ToString());
         }
 
+        /// <summary>
+        /// Scenario with example test case.
+        /// </summary>
         [Test]
         public void ScenarioWithExampleTestCase()
         {
-            Sut.Background.Should().BeNull();
-            Sut.Scenarios.Count().Should().Be(1); 
+            this.Sut.Background.Should().BeNull();
+            this.Sut.Scenarios.Count().Should().Be(1);
         }
 
+        /// <summary>
+        /// Scenario should be.
+        /// </summary>
         [Test]
         public void ScenarioShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             scenario.Keyword.Syntax.Should().Be(GherkinKeyword.Scenarios);
             scenario.Name.Should().Contain("Add two numbers");
             scenario.Description.Should().Contain("System should add two\r\nnumbers");
         }
 
+        /// <summary>
+        /// Scenario given should be.
+        /// </summary>
         [Test]
         public void ScenarioGivenShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var given = scenario.Steps.Single(x => x.Step.Syntax == GherkinStep.Given);
             given.Should().NotBeNull();
             given.Parent.Should().Be(GherkinScenarioBlock.Given);
@@ -70,10 +78,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
             given.TestCase.Should().BeNull();
         }
 
+        /// <summary>
+        /// Scenario when should be.
+        /// </summary>
         [Test]
         public void ScenarioWhenShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var when = scenario.Steps.Single(x => x.Step.Syntax == GherkinStep.When);
             when.Should().NotBeNull();
             when.Parent.Should().Be(GherkinScenarioBlock.When);
@@ -81,10 +92,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
             when.TestCase.Should().BeNull();
         }
 
+        /// <summary>
+        /// Scenario then should be.
+        /// </summary>
         [Test]
         public void ScenarioThenShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var then = scenario.Steps.Single(x => x.Step.Syntax == GherkinStep.Then);
             then.Should().NotBeNull();
             then.Parent.Should().Be(GherkinScenarioBlock.Then);
@@ -92,10 +106,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
             then.TestCase.Should().BeNull();
         }
 
+        /// <summary>
+        /// Scenario example should be.
+        /// </summary>
         [Test]
         public void ScenarioExampleShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var example = scenario.Examples.ElementAt(0);
             example.Name.Should().BeEmpty();
             example.Description.Should().BeEmpty();

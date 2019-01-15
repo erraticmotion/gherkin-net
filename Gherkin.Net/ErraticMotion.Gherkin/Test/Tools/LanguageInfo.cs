@@ -15,6 +15,14 @@ namespace ErraticMotion.Test.Tools
         private readonly Func<GherkinKeyword, string, ILanguageSyntax<GherkinKeyword>> keyword;
         private readonly Func<GherkinStep, string, ILanguageSyntax<GherkinStep>> step;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LanguageInfo"/> class.
+        /// </summary>
+        /// <param name="code">The code.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="cultureInfo">The culture information.</param>
+        /// <param name="specificCultueInfo">The specific cultue information.</param>
+        /// <param name="find">The find.</param>
         public LanguageInfo(
             string code,
             string name,
@@ -28,7 +36,7 @@ namespace ErraticMotion.Test.Tools
             this.SpecificCultureInfo = specificCultueInfo;
             this.keyword = (s, f) => new LocalisedKeyword
             {
-                Syntax = s, 
+                Syntax = s,
                 Localised = find(f)
             };
 
@@ -39,13 +47,13 @@ namespace ErraticMotion.Test.Tools
             };
         }
 
-        public string Code { get; private set; }
+        public string Code { get; }
 
-        public string EnglishName { get; private set; }
+        public string EnglishName { get; }
 
-        public CultureInfo CultureInfo { get; private set; }
+        public CultureInfo CultureInfo { get; }
 
-        public CultureInfo SpecificCultureInfo { get; private set; }
+        public CultureInfo SpecificCultureInfo { get; }
 
         public ILanguageSyntax<GherkinKeyword> Get(GherkinKeyword value)
         {

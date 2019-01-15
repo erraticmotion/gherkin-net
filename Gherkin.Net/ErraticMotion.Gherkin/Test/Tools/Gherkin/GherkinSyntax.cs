@@ -11,11 +11,11 @@ namespace ErraticMotion.Test.Tools.Gherkin
 
     internal static class GherkinSyntax
     {
-        public static string DocString { get { return "\"\"\""; } }
+        public static string DocString => "\"\"\"";
 
-        public static string Comment { get { return "#"; } }
+        public static string Comment => "#";
 
-        public static string Tag { get { return "@"; } }
+        public static string Tag => "@";
 
         public static IEnumerable<GherkinKeyword> GetKeywords()
         {
@@ -24,7 +24,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
 
         public static IEnumerable<GherkinStep> GetSteps()
         {
-            return Enum.GetValues(typeof(GherkinStep)).Cast<GherkinStep>(); 
+            return Enum.GetValues(typeof(GherkinStep)).Cast<GherkinStep>();
         }
 
         public static bool IsComment(this string line)
