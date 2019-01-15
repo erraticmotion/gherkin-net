@@ -1,2 +1,3 @@
-# gherkin-net
-Ghekin lexer and interpreter for .NET
+# Gherkin-Net
+
+- Ghekin lexer and interpreter for .NET
