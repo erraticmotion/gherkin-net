@@ -8,19 +8,25 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using System.Linq;
 
     using FluentAssertions;
-
     using Moq;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Scenario Outline Builder Tests.
+    /// </summary>
+    /// <seealso cref="Builders.GherkinStepBuilder{IGherkinBlockStep}" />
     [TestFixture]
     public class ScenarioOutlineBuilderBehaviour : GherkinStepBuilder<IGherkinBlockStep>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioOutlineBuilderBehaviour"/> class.
+        /// </summary>
         public ScenarioOutlineBuilderBehaviour()
             : base(Internationalization.Default, GherkinKeyword.ScenarioOutline)
         {
         }
 
+        /// <inheritdoc />
         public override IGherkinBlockStep Build()
         {
             var doc = new Mock<ILanguageSyntax<GherkinStep>>();
@@ -33,6 +39,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
                 "the system is in this state").Build();
         }
 
+        /// <summary>
+        /// Gherkin block should be.
+        /// </summary>
         [Test]
         public void GherkinBlockShouldBe()
         {
@@ -40,6 +49,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             sut.Keyword.Syntax.Should().Be(GherkinKeyword.ScenarioOutline);
         }
 
+        /// <summary>
+        /// Gherkin title should be.
+        /// </summary>
         [Test]
         public void GherkinTitleShouldBe()
         {
@@ -48,6 +60,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             result.Name.Should().Contain("method_description");
         }
 
+        /// <summary>
+        /// Scenario outline builder build no steps.
+        /// </summary>
         [Test]
         public void ScenarioOutlineBuilderBuildNoSteps()
         {
@@ -60,6 +75,9 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             result.Steps.Count().Should().Be(0);
         }
 
+        /// <summary>
+        /// Scenario outline builder with one step.
+        /// </summary>
         [Test]
         public void ScenarioOutlineBuilderWithOneStep()
         {

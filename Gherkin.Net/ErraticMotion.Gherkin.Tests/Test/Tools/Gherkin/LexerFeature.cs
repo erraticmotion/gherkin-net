@@ -8,8 +8,16 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using System;
     using System.IO;
 
+    /// <summary>
+    /// Simple wrapper around the <see cref="Lexer.For(string)"/> member.
+    /// </summary>
     internal static class LexerFeature
     {
+        /// <summary>
+        /// Creates the specified <see cref="IGherkinFeature"/> AST.
+        /// </summary>
+        /// <param name="s">The Gherkin string representation.</param>
+        /// <returns>The IGherkinFeature AST.</returns>
         public static IGherkinFeature Create(string s)
         {
             var result = Lexer.For(@"c:\\some.feature", new StringReader(s)).Parse();

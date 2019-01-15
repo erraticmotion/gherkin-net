@@ -5,20 +5,29 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin.Builders
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     using ErraticMotion.Test.Fixtures;
     using ErraticMotion.Test.Tools.Gherkin.Elements;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Example Builder Tests.
+    /// </summary>
+    /// <seealso cref="GivenWhenThen" />
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class ExampleBuilderBehaviour : GivenWhenThen
     {
+        /// <summary>
+        /// The SUT
+        /// </summary>
         private Example sut;
 
+        /// <inheritdoc />
         protected override void Given()
         {
             var builder = new ExampleBuilder(Internationalization.Default, "title");
@@ -31,18 +40,27 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             this.sut = builder.Build();
         }
 
+        /// <summary>
+        /// Example keyword should be.
+        /// </summary>
         [Then]
         public void ExampleKeywordShouldBe()
         {
             this.sut.Keyword.Syntax.Should().Be(GherkinKeyword.Where);
         }
 
+        /// <summary>
+        /// Example name should be.
+        /// </summary>
         [Then]
         public void ExampleNameShouldBe()
         {
             this.sut.Name.Should().Contain("title");
         }
 
+        /// <summary>
+        /// Example description should be.
+        /// </summary>
         [Then]
         public void ExampleDescriptionShouldBe()
         {
@@ -50,18 +68,30 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             this.sut.Description.Should().Contain("on multiple lines");
         }
 
+        /// <summary>
+        /// Example test case param 1 should be.
+        /// </summary>
         [Then]
         public void ExampleTestCaseParam1ShouldBe()
         {
             this.sut.TestCases.Parameters.ElementAt(0).Value.Should().Be("name");
         }
 
+        /// <summary>
+        /// Example test case param 2 should be.
+        /// </summary>
         [Then]
         public void ExampleTestCaseParam2ShouldBe()
         {
             this.sut.TestCases.Parameters.ElementAt(1).Value.Should().Be("value");
         }
 
+        /// <summary>
+        /// Example test case value should be.
+        /// </summary>
+        /// <param name="row">The row.</param>
+        /// <param name="column">The column.</param>
+        /// <param name="expected">The expected.</param>
         [Where(0, 0, "a")]
         [Where(0, 1, 1)]
         [Where(1, 0, "b")]
@@ -73,8 +103,11 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
             this.sut.TestCases.Values.ElementAt(row).ElementAt(column).Value.Should().Be(expected);
         }
 
+        /// <summary>
+        /// Example builder test cases count should be.
+        /// </summary>
         [Test]
-        public void ExampleBuilerTTestCasesCountShouldBe()
+        public void ExampleBuilderTTestCasesCountShouldBe()
         {
             this.sut.TestCases.Values.Count().Should().Be(3);
         }

@@ -6,12 +6,18 @@
 namespace ErraticMotion.Test.Tools.Gherkin
 {
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Gherkin Step Tests.
+    /// </summary>
     [TestFixture]
     public class GherkinStepTests
     {
+        /// <summary>
+        /// Should match step keyword.
+        /// </summary>
+        /// <param name="value">The value.</param>
         [TestCase("and")]
         [TestCase("And")]
         [TestCase("AND")]
@@ -19,8 +25,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
         [TestCase(" and ")]
         public void ShouldMatchStepKeyword(string value)
         {
-            // TODO Enable
-            //value.StartsWith(GherkinStep.And).Should().BeTrue();
+            value.StartsWith(GherkinStep.And).Should().BeTrue();
         }
     }
 }

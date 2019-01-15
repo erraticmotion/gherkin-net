@@ -9,14 +9,18 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
     using System.Linq;
 
     using FluentAssertions;
-
     using Moq;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Scenario Step Builder tests.
+    /// </summary>
     [TestFixture]
     public class ScenarioStepBuilderBehaviour
     {
+        /// <summary>
+        /// Scenario builder.
+        /// </summary>
         [Test]
         public void ScenarioBuilderBehaviour()
         {

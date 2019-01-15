@@ -12,18 +12,31 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
 
     internal class ScenarioOutlineBuilder : ScenarioBuilder, IExample
     {
+        /// <summary>
+        /// The examples
+        /// </summary>
         private readonly IList<ExampleBuilder> examples = new List<ExampleBuilder>();
 
-        public ScenarioOutlineBuilder(ILanguageInfo info, string title) 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioOutlineBuilder"/> class.
+        /// </summary>
+        /// <param name="info">The information.</param>
+        /// <param name="title">The title.</param>
+        public ScenarioOutlineBuilder(ILanguageInfo info, string title)
             : base(info, title, GherkinKeyword.ScenarioOutline)
         {
         }
 
-        public void AddExample(ExampleBuilder examplebuilder)
+        /// <summary>
+        /// Adds the example.
+        /// </summary>
+        /// <param name="exampleBuilder">The example builder.</param>
+        public void AddExample(ExampleBuilder exampleBuilder)
         {
-            this.examples.Add(examplebuilder);
+            this.examples.Add(exampleBuilder);
         }
 
+        /// <inheritdoc />
         public override Scenario Build()
         {
             return new Scenario(

@@ -10,23 +10,39 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using System.IO;
     using System.Linq;
 
-    using ErraticMotion.Test.Tools.Gherkin.Builders;
+    using Builders;
 
     /// <summary>
     /// Responsible for creating an Abstract Syntax Tree from the Gherkin domain language.
     /// </summary>
     internal class GherkinLexer : IGherkinLexer
     {
+        /// <summary>
+        /// The source file path
+        /// </summary>
         private readonly string sourceFilePath;
+
+        /// <summary>
+        /// The feature file reader
+        /// </summary>
         private readonly TextReader featureFileReader;
+
+        /// <summary>
+        /// The language
+        /// </summary>
         private readonly ILanguageInfo language;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GherkinLexer"/> class.
+        /// </summary>
+        /// <param name="sourceFilePath">The source file path.</param>
+        /// <param name="featureFileReader">The feature file reader.</param>
         public GherkinLexer(string sourceFilePath, TextReader featureFileReader)
         {
             this.sourceFilePath = sourceFilePath;
             var contents = featureFileReader.ReadToEnd();
             this.language = Internationalization.SetDefault().TryParse(contents);
-            this.featureFileReader = new StringReader(contents); 
+            this.featureFileReader = new StringReader(contents);
         }
 
         /// <summary>
@@ -38,7 +54,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
             var featureBuilder = new FeatureBuilder(this.language, this.sourceFilePath);
 
             string currentLine;
-   
+
             BackgroundBuilder backgroundBuilder = null;
             ScenarioBuilder scenarioBuilder = null;
             ScenarioStepBuilder stepBuilder = null;
@@ -59,7 +75,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
             while ((currentLine = this.featureFileReader.ReadLine()) != null)
             {
                 var keywordMatched = false;
-                foreach (var keyword in keywords) 
+                foreach (var keyword in keywords)
                 {
                     if (!currentLine.StartsWith(keyword))
                     {
@@ -97,7 +113,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                             tokenisingFeature = false;
                             tokenisingBackground = false;
                             tokenisingExamples = false;
-                               
+
                             if (!tokenisingScenario)
                             {
                                 tokenisingScenario = true;
@@ -118,7 +134,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                             tokenisingFeature = false;
                             tokenisingBackground = false;
                             tokenisingExamples = false;
-                                
+
                             if (!tokenisingScenario)
                             {
                                 tokenisingScenario = true;
@@ -142,10 +158,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                             if (scenarioBuilder != null)
                             {
                                 var outline = scenarioBuilder as ScenarioOutlineBuilder;
-                                if (outline != null)
-                                {
-                                    outline.AddExample(exampleBuilder);
-                                }
+                                outline?.AddExample(exampleBuilder);
                             }
 
                             break;
@@ -154,7 +167,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
 
                 if (!keywordMatched)
                 {
-                    foreach (var step in steps) 
+                    foreach (var step in steps)
                     {
                         if (!currentLine.StartsWith(step))
                         {
@@ -168,8 +181,8 @@ namespace ErraticMotion.Test.Tools.Gherkin
                         {
                             case GherkinStep.Given:
                                 stepBuilder = new ScenarioStepBuilder(
-                                    GherkinScenarioBlock.Given, 
-                                    step, 
+                                    GherkinScenarioBlock.Given,
+                                    step,
                                     currentLine.Trim(step));
                                 if (tokenisingBackground)
                                 {
@@ -177,16 +190,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                     break;
                                 }
 
-                                if (scenarioBuilder != null)
-                                {
-                                    scenarioBuilder.AddStep(stepBuilder);
-                                }
+                                scenarioBuilder?.AddStep(stepBuilder);
 
                                 break;
 
                             case GherkinStep.When:
                                 stepBuilder = new ScenarioStepBuilder(
-                                    GherkinScenarioBlock.When, 
+                                    GherkinScenarioBlock.When,
                                     step,
                                     currentLine.Trim(step));
                                 if (tokenisingBackground)
@@ -195,16 +205,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                     break;
                                 }
 
-                                if (scenarioBuilder != null)
-                                {
-                                    scenarioBuilder.AddStep(stepBuilder);
-                                }
+                                scenarioBuilder?.AddStep(stepBuilder);
 
                                 break;
 
                             case GherkinStep.Then:
                                 stepBuilder = new ScenarioStepBuilder(
-                                    GherkinScenarioBlock.Then, 
+                                    GherkinScenarioBlock.Then,
                                     step,
                                     currentLine.Trim(step));
                                 if (tokenisingBackground)
@@ -213,10 +220,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                     break;
                                 }
 
-                                if (scenarioBuilder != null)
-                                {
-                                    scenarioBuilder.AddStep(stepBuilder);
-                                }
+                                scenarioBuilder?.AddStep(stepBuilder);
 
                                 break;
 
@@ -227,7 +231,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                 }
 
                                 stepBuilder = new ScenarioStepBuilder(
-                                    scenario, 
+                                    scenario,
                                     step,
                                     currentLine.Trim(step));
                                 if (tokenisingBackground)
@@ -236,10 +240,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                     break;
                                 }
 
-                                if (scenarioBuilder != null)
-                                {
-                                    scenarioBuilder.AddStep(stepBuilder);
-                                }
+                                scenarioBuilder?.AddStep(stepBuilder);
 
                                 break;
 
@@ -250,7 +251,7 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                 }
 
                                 stepBuilder = new ScenarioStepBuilder(
-                                    scenario, 
+                                    scenario,
                                     step,
                                     currentLine.Trim(step));
                                 if (tokenisingBackground)
@@ -259,17 +260,14 @@ namespace ErraticMotion.Test.Tools.Gherkin
                                     break;
                                 }
 
-                                if (scenarioBuilder != null)
-                                {
-                                    scenarioBuilder.AddStep(stepBuilder);
-                                }
+                                scenarioBuilder?.AddStep(stepBuilder);
 
                                 break;
                         }
                     }
                 }
 
-                if (currentLine.IsDocString()) 
+                if (currentLine.IsDocString())
                 {
                     if (docStringBuilder == null)
                     {
@@ -372,10 +370,11 @@ namespace ErraticMotion.Test.Tools.Gherkin
                 if (tokenisingScenario && !keywordMatched)
                 {
                     scenarioBuilder.AddDescription(currentLine);
-                    //continue;
+
+                    // continue;
                 }
             }
-            
+
             return featureBuilder.Build();
         }
     }

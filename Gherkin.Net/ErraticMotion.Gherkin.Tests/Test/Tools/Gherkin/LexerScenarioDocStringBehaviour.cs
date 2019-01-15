@@ -5,6 +5,7 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
 
@@ -12,19 +13,17 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using ErraticMotion.Test.Fixtures.Containers;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Lexer Scenario DocString.
+    /// </summary>
+    /// <seealso cref="Fixtures.GivenWhenThen{IGherkinFeature}" />
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class LexerScenarioDocStringBehaviour : GivenWhenThen<IGherkinFeature>
     {
-        /// <summary>
-        /// Arrange all necessary preconditions and inputs.
-        /// </summary>
-        /// <param name="kernel">The <see cref="IFixtureKernel" /> Test Double IoC container.</param>
-        /// <returns>
-        /// The System/Software Under Test.
-        /// </returns>
+        /// <inheritdoc />
         protected override IGherkinFeature Given(IFixtureKernel kernel)
         {
             var f = new StringBuilder();
@@ -45,26 +44,35 @@ namespace ErraticMotion.Test.Tools.Gherkin
             return LexerFeature.Create(f.ToString());
         }
 
+        /// <summary>
+        /// Scenario with example test case.
+        /// </summary>
         [Test]
         public void ScenarioWithExampleTestCase()
         {
-            Sut.Background.Should().BeNull();
-            Sut.Scenarios.Count().Should().Be(1);
+            this.Sut.Background.Should().BeNull();
+            this.Sut.Scenarios.Count().Should().Be(1);
         }
 
+        /// <summary>
+        /// Scenario should be.
+        /// </summary>
         [Test]
         public void ScenarioShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             scenario.Keyword.Syntax.Should().Be(GherkinKeyword.Scenario);
             scenario.Name.Should().Contain("Add two numbers");
             scenario.Description.Should().BeEmpty();
         }
 
+        /// <summary>
+        /// Scenario when should be.
+        /// </summary>
         [Test]
         public void ScenarioWhenShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var when = scenario.Steps.Single(x => x.Step.Syntax == GherkinStep.When);
             when.Should().NotBeNull();
             when.Parent.Should().Be(GherkinScenarioBlock.When);
@@ -75,10 +83,13 @@ namespace ErraticMotion.Test.Tools.Gherkin
             testCase[1].Should().Be("  here with spacing");
         }
 
+        /// <summary>
+        /// Scenario then should be.
+        /// </summary>
         [Test]
         public void ScenarioThenShouldBe()
         {
-            var scenario = Sut.Scenarios.ElementAt(0);
+            var scenario = this.Sut.Scenarios.ElementAt(0);
             var then = scenario.Steps.Single(x => x.Step.Syntax == GherkinStep.Then);
             then.Should().NotBeNull();
             then.Parent.Should().Be(GherkinScenarioBlock.Then);

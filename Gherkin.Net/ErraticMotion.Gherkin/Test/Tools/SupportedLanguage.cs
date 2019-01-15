@@ -11,15 +11,22 @@ namespace ErraticMotion.Test.Tools
 
     internal class SupportedLanguage : ILanguageSupport
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SupportedLanguage"/> class.
+        /// </summary>
+        /// <param name="info">The information.</param>
         public SupportedLanguage(ILanguageInfo info)
         {
             this.LanguageInfo = info;
         }
 
-        public ILanguageInfo LanguageInfo { get; private set; }
+        /// <inheritdoc />
+        public ILanguageInfo LanguageInfo { get; }
 
-        public IEnumerable<ILanguageSyntax<GherkinKeyword>> Keywords { get { return this.LanguageInfo.AllKeywords(); } }
+        /// <inheritdoc />
+        public IEnumerable<ILanguageSyntax<GherkinKeyword>> Keywords => this.LanguageInfo.AllKeywords();
 
-        public IEnumerable<ILanguageSyntax<GherkinStep>> Steps { get { return this.LanguageInfo.AllSteps(); } }
+        /// <inheritdoc />
+        public IEnumerable<ILanguageSyntax<GherkinStep>> Steps => this.LanguageInfo.AllSteps();
     }
 }

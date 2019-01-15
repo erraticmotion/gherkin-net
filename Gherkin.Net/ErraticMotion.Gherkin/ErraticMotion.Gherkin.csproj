@@ -51,7 +51,6 @@
     <Compile Include="Test\Tools\Gherkin\Builders\IBuilder.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\IExample.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ITestCaseBuilder.cs" />
-    <Compile Include="Test\Tools\Gherkin\Builders\NamespaceDoc.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ScenarioBuilder.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ScenarioOutlineBuilder.cs" />
     <Compile Include="Test\Tools\Gherkin\Builders\ScenarioStepBuilder.cs" />
@@ -102,7 +101,6 @@
     <Compile Include="Test\Tools\Gherkin\ITestCaseRow.cs" />
     <Compile Include="Test\Tools\Gherkin\ITestCases.cs" />
     <Compile Include="Test\Tools\Gherkin\Lexer.cs" />
-    <Compile Include="Test\Tools\Gherkin\NamespaceDoc.cs" />
     <Compile Include="Test\Tools\Gherkin\StringExtensions.cs" />
     <Compile Include="Test\Tools\IGherkinSyntax.cs" />
     <Compile Include="Test\Tools\IGherkinVocabulary.cs" />

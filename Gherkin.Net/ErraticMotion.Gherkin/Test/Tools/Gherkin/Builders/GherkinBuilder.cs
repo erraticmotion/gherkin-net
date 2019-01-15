@@ -52,17 +52,17 @@ namespace ErraticMotion.Test.Tools.Gherkin.Builders
         /// <summary>
         /// Gets the gherkin block keyword.
         /// </summary>
-        public virtual ILanguageSyntax<GherkinKeyword> Keyword { get; private set; }
+        public virtual ILanguageSyntax<GherkinKeyword> Keyword { get; }
 
         /// <summary>
         /// Gets the Gherkin description.
         /// </summary>
-        public virtual string Description { get { return this.description.ToString().Trim(); } }
+        public virtual string Description => this.description.ToString().Trim();
 
         /// <summary>
         /// Gets the language.
         /// </summary>
-        public virtual ILanguageInfo LanguageInfo { get; private set; }  
+        public virtual ILanguageInfo LanguageInfo { get; }
 
         /// <summary>
         /// Gets the Gherkin comments.

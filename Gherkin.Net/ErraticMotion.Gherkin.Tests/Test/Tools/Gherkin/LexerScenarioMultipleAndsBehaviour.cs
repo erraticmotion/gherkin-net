@@ -5,6 +5,7 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
 
@@ -12,19 +13,17 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using ErraticMotion.Test.Fixtures.Containers;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Lexer Scenario Multiple Ands.
+    /// </summary>
+    /// <seealso cref="Fixtures.GivenWhenThen{IGherkinFeature}" />
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class LexerScenarioMultipleAndsBehaviour : GivenWhenThen<IGherkinFeature>
     {
-        /// <summary>
-        /// Arrange all necessary preconditions and inputs.
-        /// </summary>
-        /// <param name="kernel">The <see cref="IFixtureKernel" /> Test Double IoC container.</param>
-        /// <returns>
-        /// The System/Software Under Test.
-        /// </returns>
+        /// <inheritdoc />
         protected override IGherkinFeature Given(IFixtureKernel kernel)
         {
             var f = new StringBuilder();
@@ -48,41 +47,59 @@ namespace ErraticMotion.Test.Tools.Gherkin
             return LexerFeature.Create(f.ToString());
         }
 
+        /// <summary>
+        /// Scenario with example test case.
+        /// </summary>
         [Test]
         public void ScenarioWithExampleTestCase()
         {
-            Sut.Background.Should().BeNull();
-            Sut.Scenarios.Count().Should().Be(1);
+            this.Sut.Background.Should().BeNull();
+            this.Sut.Scenarios.Count().Should().Be(1);
         }
 
+        /// <summary>
+        /// Feature should have two comments.
+        /// </summary>
         [Test]
         public void FeatureShouldHaveTwoComments()
         {
-            Sut.Comments.Count().Should().Be(2);
+            this.Sut.Comments.Count().Should().Be(2);
         }
 
+        /// <summary>
+        /// Feature should have one tag.
+        /// </summary>
         [Test]
         public void FeatureShouldHaveOneTag()
         {
-            Sut.Tags.Count().Should().Be(1);
+            this.Sut.Tags.Count().Should().Be(1);
         }
 
+        /// <summary>
+        /// Scenario step given should have four steps.
+        /// </summary>
         [Test]
         public void ScenarioStepGivenShouldHaveFourSteps()
         {
-            Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.Given).Count().Should().Be(3);
+            this.Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.Given).Count().Should().Be(3);
         }
 
+        /// <summary>
+        /// Scenario step when should have one step.
+        /// </summary>
         [Test]
         public void ScenarioStepWhenShouldHaveOneStep()
         {
-            Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.When).Count().Should().Be(0);
+            this.Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.When).Count().Should().Be(0);
         }
 
+        /// <summary>
+        /// Scenario step then should have one step.
+        /// </summary>
         [Test]
         public void ScenarioStepThenShouldHaveOneStep()
         {
-            Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.Then).Count().Should().Be(0);
+            this.Sut.Scenarios[0].Steps.Parent(GherkinScenarioBlock.Then).Count().Should().Be(0);
         }
     }
 }

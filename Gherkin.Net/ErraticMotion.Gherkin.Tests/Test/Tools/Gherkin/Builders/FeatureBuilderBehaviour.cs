@@ -6,12 +6,19 @@
 namespace ErraticMotion.Test.Tools.Gherkin.Builders
 {
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Feature Builder Tests.
+    /// </summary>
     [TestFixture]
     public class FeatureBuilderBehaviour
     {
+        /// <summary>
+        /// Gherkin keyword should be.
+        /// </summary>
+        /// <param name="lang">The language.</param>
+        /// <param name="expected">The expected.</param>
         [TestCase("en", "Feature")]
         [TestCase("en-GB", "Feature")]
         [TestCase("en-US", "Feature")]

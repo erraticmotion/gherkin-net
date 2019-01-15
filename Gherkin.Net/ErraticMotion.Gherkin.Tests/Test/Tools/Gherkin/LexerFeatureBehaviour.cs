@@ -5,6 +5,7 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
 
@@ -12,19 +13,17 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using ErraticMotion.Test.Fixtures.Containers;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
+    /// <summary>
+    /// Lexer Feature Tests.
+    /// </summary>
+    /// <seealso cref="Fixtures.GivenWhenThen{GIGherkinFeature}" />
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class LexerFeatureBehaviour : GivenWhenThen<IGherkinFeature>
     {
-        /// <summary>
-        /// Arrange all necessary preconditions and inputs.
-        /// </summary>
-        /// <param name="kernel">The <see cref="IFixtureKernel" /> Test Double IoC container.</param>
-        /// <returns>
-        /// The System/Software Under Test.
-        /// </returns>
+        /// <inheritdoc />
         protected override IGherkinFeature Given(IFixtureKernel kernel)
         {
             var f = new StringBuilder();
@@ -36,15 +35,18 @@ namespace ErraticMotion.Test.Tools.Gherkin
             return LexerFeature.Create(f.ToString());
         }
 
+        /// <summary>
+        /// Feature should be.
+        /// </summary>
         [Test]
         public void FeatureShouldBe()
         {
-            Sut.Comments.Count().Should().Be(2);
-            Sut.Keyword.Syntax.Should().Be(GherkinKeyword.Feature);
-            Sut.Name.Should().Be("Calculator");
-            Sut.Description.Should().Contain("In order to");
-            Sut.Description.Should().Contain("as a math idiot");
-            Sut.Description.Should().Contain("want to be told the sum of two");
+            this.Sut.Comments.Count().Should().Be(2);
+            this.Sut.Keyword.Syntax.Should().Be(GherkinKeyword.Feature);
+            this.Sut.Name.Should().Be("Calculator");
+            this.Sut.Description.Should().Contain("In order to");
+            this.Sut.Description.Should().Contain("as a math idiot");
+            this.Sut.Description.Should().Contain("want to be told the sum of two");
         }
     }
 }

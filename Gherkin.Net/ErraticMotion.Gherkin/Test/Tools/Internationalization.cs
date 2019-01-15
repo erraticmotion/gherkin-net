@@ -15,22 +15,54 @@ namespace ErraticMotion.Test.Tools
     /// Represents the language and vocabulary service entry point.
     /// </summary>
     /// <remarks>
-    /// Internationalization and localization, i18n; where 18 stands for the number of letters 
+    /// Internationalization and localization, i18n; where 18 stands for the number of letters
     /// between the first i and the last n in the word “internationalization”.
     /// </remarks>
     public class Internationalization : ILanguageService, IVocabularyService
     {
+        /// <summary>
+        /// The default code
+        /// </summary>
         private const string DefaultCode = "en";
+
+        /// <summary>
+        /// The language pattern
+        /// </summary>
         private static readonly Regex LanguagePattern = new Regex(@"^\s*#\s*language:\s*(?<lang>[\w-]+)\s*\n");
-        
+
+        /// <summary>
+        /// The specified language
+        /// </summary>
+        private readonly CultureInfo specifiedLanguage;
+
+        /// <summary>
+        /// Prevents a default instance of the <see cref="Internationalization"/> class from being created.
+        /// </summary>
+        private Internationalization()
+            : this(CultureInfo.GetCultureInfo(DefaultCode))
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Internationalization"/> class.
+        /// </summary>
+        /// <param name="specifiedLanguage">The specified language.</param>
+        private Internationalization(CultureInfo specifiedLanguage)
+        {
+            this.specifiedLanguage = specifiedLanguage;
+        }
+
         /// <summary>
         /// Gets the default language information.
         /// </summary>
         /// <value>An object that supports the <see cref="ILanguageInfo"/> abstraction.</value>
-        public static ILanguageInfo Default
-        {
-            get { return For(DefaultCode); }
-        }
+        public static ILanguageInfo Default => For(DefaultCode);
+
+        /// <summary>
+        /// Gets an object that contains the international vocabularies.
+        /// </summary>
+        /// <returns>An object that supports the <see cref="IVocabularyService"/> abstraction.</returns>
+        public static IVocabularyService Vocabularies => new Internationalization();
 
         /// <summary>
         /// Gets the language information for the specified code.
@@ -53,36 +85,6 @@ namespace ErraticMotion.Test.Tools
         }
 
         /// <summary>
-        /// Gets an object that contains the international vocabularies.
-        /// </summary>
-        /// <returns>An object that supports the <see cref="IVocabularyService"/> abstraction.</returns>
-        public static IVocabularyService Vocabularies
-        {
-            get { return new Internationalization(); }
-        }
-
-        private readonly CultureInfo specifiedLanguage;
-
-        /// <summary>
-        /// Prevents a default instance of the <see cref="Internationalization"/> class from being created.
-        /// </summary>
-        private Internationalization()
-            : this(CultureInfo.GetCultureInfo(DefaultCode))
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Internationalization"/> class.
-        /// </summary>
-        /// <param name="specifiedLanguage">The specified language.</param>
-        private Internationalization(CultureInfo specifiedLanguage)
-        {
-            this.specifiedLanguage = specifiedLanguage;
-        }
-
-        #region ILanguageService
-
-        /// <summary>
         /// Gets the language.
         /// </summary>
         /// <param name="fileContent">Content of the file.</param>
@@ -97,13 +99,9 @@ namespace ErraticMotion.Test.Tools
             {
                 name = langMatch.Groups["lang"].Value;
             }
-                
+
             return SupportedLanguages.GetSupportedLanguage(name);
         }
-
-        #endregion
-
-        #region IVocabularyService
 
         /// <summary>
         /// Returns the Gherkin vocabulary for the specified code.
@@ -138,7 +136,5 @@ namespace ErraticMotion.Test.Tools
         {
             return this.GetEnumerator();
         }
-
-        #endregion
     }
 }

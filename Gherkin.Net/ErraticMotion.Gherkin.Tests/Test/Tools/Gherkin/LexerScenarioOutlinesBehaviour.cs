@@ -5,6 +5,7 @@
 
 namespace ErraticMotion.Test.Tools.Gherkin
 {
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text;
 
@@ -12,10 +13,10 @@ namespace ErraticMotion.Test.Tools.Gherkin
     using ErraticMotion.Test.Fixtures.Containers;
 
     using FluentAssertions;
-
     using NUnit.Framework;
 
     [TestFixture]
+    [SuppressMessage("StyleCop.CSharp.OrderingRules", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Reviewed. Suppression is OK here.")]
     public class LexerScenarioOutlinesBehaviour : GivenWhenThen<IGherkinFeature>
     {
         /// <summary>

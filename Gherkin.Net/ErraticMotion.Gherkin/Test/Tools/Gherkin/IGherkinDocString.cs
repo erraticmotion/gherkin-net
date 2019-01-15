@@ -12,10 +12,10 @@ namespace ErraticMotion.Test.Tools.Gherkin
     /// Represents a Gherkin DocString object.
     /// </summary>
     /// <remarks>
-    /// Indentation of the opening """ is unimportant, although common practice is two 
-    /// spaces in from the enclosing step. The indentation inside the triple quotes, 
-    /// however, is significant. Each line of the Doc String will be de-indented according 
-    /// to the opening """. Indentation beyond the column of the opening """ will 
+    /// Indentation of the opening """ is unimportant, although common practice is two
+    /// spaces in from the enclosing step. The indentation inside the triple quotes,
+    /// however, is significant. Each line of the Doc String will be de-indented according
+    /// to the opening """. Indentation beyond the column of the opening """ will
     /// therefore be preserved.
     /// </remarks>
     [SuppressMessage("Microsoft.Naming", "CA1710:IdentifiersShouldHaveCorrectSuffix", Justification = "Gherkin keyword")]
