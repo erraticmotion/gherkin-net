@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461;netcoreapp2.2</TargetFrameworks>
+    <RootNamespace>ErraticMotion</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>ErraticMotion.Gherkin</PackageId>
+    <Version>0.1.1</Version>
+    <Authors>Rob Ives</Authors>
+    <Company>Erratic Motion</Company>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/erraticmotion/gherkin-net</PackageProjectUrl>
+    <PackageTags>TDD BDD Gherkin</PackageTags>
+    <Copyright>Copyright Erratic Motion 2018</Copyright>
+    <Description>Gherkin Lexer for Net</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Test\Tools\Languages.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Test\Tools\Languages.xml" />
+  </ItemGroup>
+
+</Project>
